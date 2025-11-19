@@ -13,7 +13,7 @@ window.INITIAL_DATA = {
     products: [
         { id: 'p1', name: '徐闻“菠萝的海”金钻凤梨', price: 58, category: 'Agricultural', description: '每一口都是北纬20度的阳光。甜度18+，无需泡盐水。', imageUrl: 'https://s21.ax1x.com/2025/11/20/pZFEvOU.jpg', origin: '徐闻' },
         { id: 'p2', name: '廉江红橙', price: 88, category: 'Agricultural', description: '皮薄肉红，汁水丰盈。国宴佳果，助农优选。', imageUrl: 'https://s21.ax1x.com/2025/11/20/pZFVpTJ.jpg', origin: '廉江' },
-        { id: 'p3', name: '阿彪同款“辩证法”增肌粉', price: 299, category: 'Merch', description: '附赠《矛盾论》袖珍本。让肌肉与思想同步增长。', imageUrl: 'https://s21.ax1x.com/2025/11/20/pZFVg74.png' },
+        { id: 'p3', name: '群星联名辩证法蛋白粉', price: 299, category: 'Merch', description: '附赠《矛盾论》袖珍本。让肌肉与思想同步增长。', imageUrl: 'https://s21.ax1x.com/2025/11/20/pZFVg74.png' },
         { id: 'p4', name: '穆桂英·手绘雷剧脸谱挂件', price: 45, category: 'Merch', description: '杨淑宜副会长亲手绘制，每一笔都有刀马旦的精气神。', imageUrl: 'https://s21.ax1x.com/2025/11/20/pZFVsXT.jpg' },
         { id: 'p5', name: '遂溪火龙果', price: 60, category: 'Agricultural', description: '夜灯照耀下的红肉火龙果，富含花青素。', imageUrl: 'https://s21.ax1x.com/2025/11/20/pZFVrcV.jpg', origin: '遂溪' },
         { id: 'p6', name: '阿丽手作·机械八音盒', price: 360, category: 'Merch', description: '齿轮与旋律的浪漫结合。限量发售。', imageUrl: 'https://s21.ax1x.com/2025/11/20/pZFV6nU.jpg' },
@@ -25,7 +25,7 @@ window.INITIAL_DATA = {
         heroSlogan2: "做最现实的理想主义者",
         heroSubSlogan: "潮汐时代的赤色防线 · 人民的公会",
         missionTitle: "公会宗旨",
-        missionText: "在这个超凡力量觉醒的时代，力量不应成为特权的通行证，而应是守护弱者的盾牌。\n\n我们行走在田间地头，也穿梭于霓虹都市。我们是猎人，也是农夫；是战士，也是戏子。",
+        missionText: "在这个超凡力量觉醒的时代，力量不应成为特权的通行证，而应是守护弱者的盾牌。\n\n我们行走在田间地头，也穿梭于霓虹都市。我们是猎人，也是农夫；是战士，也是工人。",
         missionHighlight: "“群星聚是一团火，散是满天星。”"
     },
     actions: {
@@ -35,6 +35,6 @@ window.INITIAL_DATA = {
     },
     base: {
         address: "海南省海口市龙华区骑楼老街XX号", addressNote: "（那栋挂着红色霓虹星牌的南洋骑楼）", hours: "18:00 - 02:00 (次日)", hoursNote: "周四公休（全员去办饭局了）",
-        managerName: "林鱼鱼", managerRole: "主理人 / 普通人", managerQuote: "“这里没有等级，只有朋友。累了就进来喝杯东西吧。”", managerImg: "https://picsum.photos/seed/girl/100/100", vibeImg: "https://images.unsplash.com/photo-1514933651103-005eec06c04b?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+        managerName: "林鱼鱼", managerRole: "主理人", managerQuote: "“革命就是请客吃饭，我们是历史的践行者。”", managerImg: "https://picsum.photos/seed/girl/100/100", vibeImg: "https://images.unsplash.com/photo-1514933651103-005eec06c04b?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
     }
 };

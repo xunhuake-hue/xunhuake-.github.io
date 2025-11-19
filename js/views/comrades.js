@@ -6,7 +6,7 @@
     function renderMemberCard(m) {
         const path = `members.${m.id}`;
         return `
-        <div class="${m.special ? 'lg:col-span-2' : ''} group relative w-full ${window.store.isEditMode ? 'h-[500px]' : 'h-[450px]'} bg-slate-900 border border-slate-800 overflow-hidden hover:border-star-gold transition-all duration-500 shadow-lg">
+        <div class=" group relative w-full ${window.store.isEditMode ? 'h-[500px]' : 'h-[450px]'} bg-slate-900 border border-slate-800 overflow-hidden hover:border-star-gold transition-all duration-500 shadow-lg">
             <div class="absolute inset-0 h-full w-full">
                 ${editableImg(`${path}.imageUrl`, m.imageUrl, m.name, 'w-full h-full object-cover filter grayscale group-hover:grayscale-0 group-hover:scale-110')}
             </div>
