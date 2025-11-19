@@ -23,7 +23,7 @@
                 window.starsApp.closeLogin();
                 document.getElementById('password-input').value = '';
             } else {
-                alert('密码错误 (Hint: stars)');
+                alert('密码错误(Hint: stars)');
             }
         },
         openBooks: () => document.getElementById('book-modal').classList.replace('hidden', 'flex'),
