@@ -1,5 +1,5 @@
 {
-  "name": "Stars Guild",
-  "description": "A revolutionary guild website blending hardcore industrial aesthetics with new Chinese humanism. Features member profiles, agricultural e-commerce, and community events.",
+  "name": "Stars Guild (Vanilla)",
+  "description": "A standalone, single-file version of the Stars Guild website using native HTML/JS and Tailwind CSS. Features admin editing, routing, and persistent storage.",
   "requestFramePermissions": []
 }

@@ -75,12 +75,13 @@
             background: #b91c1c; 
         }
     </style>
+<link rel="stylesheet" href="/index.css">
 </head>
 <body class="bg-industrial-pattern min-h-screen flex flex-col selection:bg-star-red selection:text-white">
 
     <!-- Navigation -->
     <nav class="fixed top-0 left-0 right-0 z-50 bg-star-dark/90 backdrop-blur-md border-b border-star-gold/20 h-16 flex items-center px-6 justify-between shadow-lg">
-        <div class="flex items-center space-x-3 cursor-pointer" onclick="window.location.hash='/'">
+        <div class="flex items-center space-x-3 cursor-pointer" onclick="app.navigate('#/')">
             <div class="group flex items-center space-x-2">
                 <div class="relative w-10 h-10 flex items-center justify-center bg-star-red rounded-sm transform rotate-45 group-hover:rotate-0 transition-all duration-500 shadow-[0_0_15px_rgba(185,28,28,0.5)]">
                     <i data-lucide="star" class="w-6 h-6 text-star-gold transform -rotate-45 group-hover:rotate-0 transition-all duration-500 fill-current"></i>
@@ -250,6 +251,13 @@
                 });
             },
 
+            // --- Routing Helpers (Fixes Sandbox Connection Refused) ---
+            navigate(path) {
+                // Explicitly updating hash. In some environments, 'href' triggers a full page navigation
+                // which is blocked. JS modification of location.hash is usually safe.
+                window.location.hash = path;
+            },
+
             // --- Persistence ---
             saveData() {
                 localStorage.setItem('stars_guild_data', JSON.stringify(this.data));
@@ -366,8 +374,9 @@
                 
                 const html = links.map(l => {
                     const active = this.state.currentPath === l.path;
+                    // Use onclick for navigation instead of href to prevent sandbox errors
                     return `
-                    <a href="${l.path}" class="relative group flex items-center space-x-1 py-2 transition-colors duration-300 ${active ? 'text-star-red' : 'text-slate-300 hover:text-star-gold'}">
+                    <a href="javascript:void(0)" onclick="app.navigate('${l.path}')" class="relative group flex items-center space-x-1 py-2 transition-colors duration-300 ${active ? 'text-star-red' : 'text-slate-300 hover:text-star-gold'}">
                         <i data-lucide="${l.icon}" width="16" class="mb-0.5 ${active ? 'fill-current' : ''}"></i>
                         <span class="font-medium">${l.label}</span>
                         ${active ? '<span class="absolute bottom-0 left-0 w-full h-0.5 bg-star-red shadow-[0_0_8px_rgba(185,28,28,0.8)]"></span>' : ''}
@@ -655,5 +664,6 @@
             app.init();
         });
     </script>
+<script type="module" src="/index.tsx"></script>
 </body>
 </html>
