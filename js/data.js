@@ -6,7 +6,7 @@ window.INITIAL_DATA = {
         { id: '2', name: '穆桂英', alias: '杨淑宜', rank: 'B', role: '副会长', position: '敏捷主攻', motto: '浪漫至死不渝。', imageUrl: 'https://s21.ax1x.com/2025/11/20/pZFVRAJ.png' },
         { id: '3', name: '薛小鹅', alias: '薛伊璠', rank: 'A', role: '总参谋长', position: '阵法宗师', motto: '因为爱，我们才存在。', imageUrl: 'https://s21.ax1x.com/2025/11/20/pZFVWN9.jpg' },
         { id: '4', name: '勇士', alias: '薛伊玙', rank: 'A', role: '安保部部长', position: '重装坦克', motto: '战场是用实力说话的，而我正好有。', imageUrl: 'https://files.imagetourl.net/uploads/1763572612345-71f2427e-39c8-42d9-927a-86c87e5c455e.png' },
-        { id: '5', name: '阿丽', alias: '冼凯文', rank: 'C', role: '首席装备师', position: '装备师', motto: '万今晚早点睡。', imageUrl: 'https://files.imagetourl.net/uploads/1763572682691-1065fd43-6b92-4e40-b9ea-7272363bfe89.png' },
+        { id: '5', name: '阿丽', alias: '冼凯文', rank: 'C', role: '首席装备师', position: '装备师', motto: '今晚早点睡。', imageUrl: 'https://files.imagetourl.net/uploads/1763572682691-1065fd43-6b92-4e40-b9ea-7272363bfe89.png' },
         { id: '6', name: '阿雷', alias: '陈雷', rank: 'C', role: '情报部部长', position: '指挥官', motto: '雄关漫道真如铁，而今迈步从头越。', imageUrl: 'https://files.imagetourl.net/uploads/1763572713603-f64478b3-c263-45e2-93de-ad7ab07c8153.jpg' },
         { id: '7', name: '啵啵菜', alias: '雪莲', rank: 'B', role: '公关部部长', position: '远程狙击', motto: '享受自己拥有的一切', imageUrl: 'https://files.imagetourl.net/uploads/1763572505985-f8c04c00-807d-4a63-85e0-0fb50068ae21.png' },
     ],
