@@ -26,7 +26,7 @@ window.INITIAL_DATA = {
         heroSubSlogan: "潮汐时代的赤色防线 · 人民的公会",
         missionTitle: "公会宗旨",
         missionText: "在这个超凡力量觉醒的时代，力量不应成为特权的通行证，而应是守护弱者的盾牌。\n\n我们行走在田间地头，也穿梭于霓虹都市。我们是猎人，也是农夫；是战士，也是工人。",
-        missionHighlight: "“群星聚是一团火，散是满天星。”"
+        missionHighlight: "“聚是一团火，散是满天星。”"
     },
     actions: {
         mealTitle: "劳动者饭局", mealQuote: "\"甚至不需要一句谢谢，只需要你吃饱。\"", mealDesc: "面向自食其力的一线劳动者。没有领导讲话，没有摆拍仪式，只有热气腾腾的自助餐和朋友间的碰杯。", mealImg: "https://files.imagetourl.net/uploads/1763573242658-daf15b48-2d58-4fbb-b7e2-659a0a32b756.png",
@@ -35,6 +35,6 @@ window.INITIAL_DATA = {
     },
     base: {
         address: "海南省海口市龙华区骑楼老街XX号", addressNote: "（那栋挂着红色霓虹星牌的南洋骑楼）", hours: "18:00 - 02:00 (次日)", hoursNote: "周四公休（全员去办饭局了）",
-        managerName: "林鱼鱼", managerRole: "主理人", managerQuote: "“革命就是请客吃饭，我们是历史的践行者”", managerImg: "https://picsum.photos/seed/girl/100/100", vibeImg: "https://images.unsplash.com/photo-1514933651103-005eec06c04b?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+        managerName: "林鱼鱼", managerRole: "主理人", managerQuote: "“革命就是请客吃饭，我们是历史的践行者”", managerImg: "https://files.imagetourl.net/uploads/1763579554092-ab866139-b2fa-4c26-abe1-1dd3b026014d.jpg", vibeImg: "https://images.unsplash.com/photo-1514933651103-005eec06c04b?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
     }
 };

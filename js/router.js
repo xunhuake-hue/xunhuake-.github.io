@@ -58,6 +58,7 @@
             }).join('');
             const navContainer = document.getElementById('nav-links');
             if(navContainer) navContainer.innerHTML = html;
+            if (window.lucide) window.lucide.createIcons();
         }
     }
 
