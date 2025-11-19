@@ -2,7 +2,7 @@
 // Define global initial data
 window.INITIAL_DATA = {
     members: [
-        { id: '1', name: '寻未', alias: '杨彦坤', rank: 'A', role: '公会总负责人', position: '主攻手', motto: '批判与自我批判。', imageUrl: 'https://files.imagetourl.net/uploads/1763572739974-be60481b-a0b3-48d8-9205-7c2690e907f4.jpg', special: true },
+        { id: '1', name: '寻未', alias: '杨彦坤', rank: 'A', role: '公会总负责人', position: '主攻手', motto: '批判与自我批判。', imageUrl: 'https://files.imagetourl.net/uploads/1763577867082-3de82490-290e-49d4-8515-919c8531e566.jpg', special: true },
         { id: '2', name: '五杯宜善良', alias: '杨淑宜', rank: 'B', role: '副会长', position: '敏捷主攻', motto: '浪漫至死不渝。', imageUrl: 'https://s21.ax1x.com/2025/11/20/pZFVRAJ.png' },
         { id: '3', name: '薛小鹅', alias: '薛伊璠', rank: 'A', role: '总参谋长', position: '阵法宗师', motto: '因为爱，我们才存在。', imageUrl: 'https://s21.ax1x.com/2025/11/20/pZFVWN9.jpg' },
         { id: '4', name: '勇士', alias: '薛伊玙', rank: 'A', role: '安保部部长', position: '重装坦克', motto: '战场是用实力说话的，而我正好有。', imageUrl: 'https://files.imagetourl.net/uploads/1763572612345-71f2427e-39c8-42d9-927a-86c87e5c455e.png' },
@@ -35,6 +35,6 @@ window.INITIAL_DATA = {
     },
     base: {
         address: "海南省海口市龙华区骑楼老街XX号", addressNote: "（那栋挂着红色霓虹星牌的南洋骑楼）", hours: "18:00 - 02:00 (次日)", hoursNote: "周四公休（全员去办饭局了）",
-        managerName: "林鱼鱼", managerRole: "主理人", managerQuote: "“革命就是请客吃饭，我们是历史的践行者。”", managerImg: "https://picsum.photos/seed/girl/100/100", vibeImg: "https://images.unsplash.com/photo-1514933651103-005eec06c04b?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+        managerName: "林鱼鱼", managerRole: "主理人", managerQuote: "“革命就是请客吃饭，我们是历史的践行者”", managerImg: "https://picsum.photos/seed/girl/100/100", vibeImg: "https://images.unsplash.com/photo-1514933651103-005eec06c04b?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
     }
 };

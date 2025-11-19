@@ -36,7 +36,7 @@
             <div class="container mx-auto">
                 <div class="mb-16 text-center">
                     <h1 class="text-4xl md:text-5xl font-serif font-bold text-slate-100 mb-4"><span class="text-star-red">群星</span>闪耀时</h1>
-                    <p class="text-slate-400 max-w-2xl mx-auto font-light">他们是凡人，也是英雄。在潮汐中站立，在烟火中前行。</p>
+                    <p class="text-slate-400 max-w-2xl mx-auto font-light">我们是怀抱唯物主义的理想青年，我们是历史的主人。</p>
                 </div>
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
                     ${window.store.data.members.map(m => renderMemberCard(m)).join('')}
