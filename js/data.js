@@ -2,13 +2,13 @@
 // Define global initial data
 window.INITIAL_DATA = {
     members: [
-        { id: '1', name: '杨彦坤', alias: '阿彪', rank: 'A', role: '公会总负责人', position: '战场哲人', motto: '物质决定意识，但拳头能开辟未来。', imageUrl: 'https://picsum.photos/seed/abiao/400/600', special: true },
-        { id: '2', name: '杨淑宜', alias: '穆桂英', rank: 'B', role: '演艺部部长', position: '敏捷主攻', motto: '人生如戏，但我不仅是角儿，更是执枪的人。', imageUrl: 'https://s21.ax1x.com/2025/11/20/pZFVRAJ.png' },
-        { id: '3', name: '薛伊璠', alias: '宝儿', rank: 'A', role: '总参谋长', position: '阵法宗师', motto: '秩序与守护，是这混乱世间最昂贵的奢侈品。', imageUrl: 'https://s21.ax1x.com/2025/11/20/pZFVWN9.jpg' },
-        { id: '4', name: '薛伊玙', alias: '勇士', rank: 'A', role: '安保部部长', position: '重装坦克', motto: '只有弱者才恃强凌弱，强者只会保护身后的人。', imageUrl: 'https://picsum.photos/seed/warrior/400/600' },
-        { id: '5', name: '冼凯文', alias: '阿丽', rank: 'C', role: '首席装备师', position: '造物主', motto: '万物皆有裂痕，那正是光（和我的以太）照进来的地方。', imageUrl: 'https://picsum.photos/seed/ali/400/600' },
-        { id: '6', name: '陈雷', alias: '阿雷', rank: 'C', role: '情报部部长', position: '战场上帝视角', motto: '代码和音符一样，都不允许有逻辑上的冗余。', imageUrl: 'https://picsum.photos/seed/alei/400/600' },
-        { id: '7', name: '雪莲', alias: '小太阳', rank: 'B', role: '公关部部长', position: '远程狙击', motto: '爱笑的人运气不会差，但我通常不靠运气，靠准头。', imageUrl: 'https://picsum.photos/seed/sun/400/600' },
+        { id: '1', name: '寻未', alias: '杨彦坤', rank: 'A', role: '公会总负责人', position: '主攻手', motto: '批判与自我批判。', imageUrl: 'https://files.imagetourl.net/uploads/1763572739974-be60481b-a0b3-48d8-9205-7c2690e907f4.jpg', special: true },
+        { id: '2', name: '穆桂英', alias: '杨淑宜', rank: 'B', role: '副会长', position: '敏捷主攻', motto: '浪漫至死不渝。', imageUrl: 'https://s21.ax1x.com/2025/11/20/pZFVRAJ.png' },
+        { id: '3', name: '薛小鹅', alias: '薛伊璠', rank: 'A', role: '总参谋长', position: '阵法宗师', motto: '因为爱，我们才存在。', imageUrl: 'https://s21.ax1x.com/2025/11/20/pZFVWN9.jpg' },
+        { id: '4', name: '勇士', alias: '薛伊玙', rank: 'A', role: '安保部部长', position: '重装坦克', motto: '战场是用实力说话的，而我正好有。', imageUrl: 'https://files.imagetourl.net/uploads/1763572612345-71f2427e-39c8-42d9-927a-86c87e5c455e.png' },
+        { id: '5', name: '阿丽', alias: '冼凯文', rank: 'C', role: '首席装备师', position: '装备师', motto: '万今晚早点睡。', imageUrl: 'https://files.imagetourl.net/uploads/1763572682691-1065fd43-6b92-4e40-b9ea-7272363bfe89.png' },
+        { id: '6', name: '阿雷', alias: '陈雷', rank: 'C', role: '情报部部长', position: '指挥官', motto: '雄关漫道真如铁，而今迈步从头越。', imageUrl: 'https://files.imagetourl.net/uploads/1763572713603-f64478b3-c263-45e2-93de-ad7ab07c8153.jpg' },
+        { id: '7', name: '啵啵菜', alias: '雪莲', rank: 'B', role: '公关部部长', position: '远程狙击', motto: '享受自己拥有的一切', imageUrl: 'https://files.imagetourl.net/uploads/1763572505985-f8c04c00-807d-4a63-85e0-0fb50068ae21.png' },
     ],
     products: [
         { id: 'p1', name: '徐闻“菠萝的海”金钻凤梨', price: 58, category: 'Agricultural', description: '每一口都是北纬20度的阳光。甜度18+，无需泡盐水。', imageUrl: 'https://s21.ax1x.com/2025/11/20/pZFEvOU.jpg', origin: '徐闻' },
@@ -29,7 +29,7 @@ window.INITIAL_DATA = {
         missionHighlight: "“群星聚是一团火，散是满天星。”"
     },
     actions: {
-        mealTitle: "劳动者饭局", mealQuote: "\"甚至不需要一句谢谢，只需要你吃饱。\"", mealDesc: "面向自食其力的一线劳动者。没有领导讲话，没有摆拍仪式，只有热气腾腾的自助餐和朋友间的碰杯。", mealImg: "https://picsum.photos/seed/meal/800/600",
+        mealTitle: "劳动者饭局", mealQuote: "\"甚至不需要一句谢谢，只需要你吃饱。\"", mealDesc: "面向自食其力的一线劳动者。没有领导讲话，没有摆拍仪式，只有热气腾腾的自助餐和朋友间的碰杯。", mealImg: "https://files.imagetourl.net/uploads/1763573242658-daf15b48-2d58-4fbb-b7e2-659a0a32b756.png",
         heritageTitle: "非遗之夜 & 助农直播", heritageQuote: "\"当电音遇上雷剧，当代码遇上泥土。\"", heritageDesc1: "19:00 - 群星戏班：赛博雷剧公演", heritageDesc2: "20:30 - 阿雷 x 雪莲：特产带货直播", heritageImg: "https://picsum.photos/seed/opera/800/600",
         finalQuote: "\"承担，是我们对这片土地最深情的告白。\""
     },
