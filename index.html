@@ -1,71 +1,659 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Stars Guild | 潮汐时代的赤色防线</title>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>群星公会 | Stars Guild</title>
+    
+    <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Tailwind Config for Custom Colors -->
     <script>
-      tailwind.config = {
-        theme: {
-          extend: {
-            colors: {
-              'star-red': '#b91c1c', // Revolutionary Red
-              'star-dark': '#0f172a', // Midnight Blue
-              'star-gold': '#f59e0b', // Dawn Gold
-              'star-gold-dim': '#92400e',
-            },
-            fontFamily: {
-              serif: ['Georgia', 'Cambria', '"Times New Roman"', 'Times', 'serif'],
-              mono: ['"Courier New"', 'Courier', 'monospace'],
-            },
-            backgroundImage: {
-              'industrial-pattern': "url('data:image/svg+xml,%3Csvg width=\\'40\\' height=\\'40\\' viewBox=\\'0 0 40 40\\' xmlns=\\'http://www.w3.org/2000/svg\\' %3E%3Cg fill=\\'%231e293b\\' fill-opacity=\\'0.4\\' fill-rule=\\'evenodd\\' %3E%3Cpath d=\\'M0 40L40 0H20L0 20M40 40V20L20 40\\' /%3E%3C/g%3E%3C/svg%3E')",
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'star-dark': '#020617', // slate-950
+                        'star-red': '#b91c1c', // red-700
+                        'star-gold': '#fbbf24', // amber-400
+                        'star-gold-dim': '#d97706', // amber-600
+                    },
+                    fontFamily: {
+                        serif: ['"Noto Serif SC"', 'Georgia', 'serif'],
+                        mono: ['"JetBrains Mono"', 'Courier New', 'monospace'],
+                    },
+                    animation: {
+                        'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                        'fade-in-up': 'fadeInUp 0.8s ease-out forwards',
+                    },
+                    keyframes: {
+                        fadeInUp: {
+                            '0%': { opacity: '0', transform: 'translateY(20px)' },
+                            '100%': { opacity: '1', transform: 'translateY(0)' },
+                        }
+                    }
+                }
             }
-          },
-        },
-      }
+        }
     </script>
+
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;700&display=swap" rel="stylesheet">
+
     <style>
-      /* Custom Scrollbar */
-      ::-webkit-scrollbar {
-        width: 8px;
-      }
-      ::-webkit-scrollbar-track {
-        background: #0f172a; 
-      }
-      ::-webkit-scrollbar-thumb {
-        background: #b91c1c; 
-        border-radius: 4px;
-      }
-      ::-webkit-scrollbar-thumb:hover {
-        background: #991b1b; 
-      }
-      /* Animation classes */
-      .glitch-text:hover {
-        animation: glitch 1s linear infinite;
-      }
-      @keyframes glitch {
-        2%, 64% { transform: translate(2px,0) skew(0deg); }
-        4%, 60% { transform: translate(-2px,0) skew(0deg); }
-        62% { transform: translate(0,0) skew(5deg); }
-      }
+        /* Custom Utilities */
+        body {
+            background-color: #020617;
+            color: #e2e8f0;
+            overflow-x: hidden;
+        }
+        .clip-path-slant {
+            clip-path: polygon(10% 0, 100% 0, 90% 100%, 0% 100%);
+        }
+        .bg-industrial-pattern {
+            background-image: radial-gradient(circle at 1px 1px, rgba(255,255,255,0.05) 1px, transparent 0);
+            background-size: 40px 40px;
+        }
+        /* Hide scrollbar for cleaner look */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #0f172a; 
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #334155; 
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #b91c1c; 
+        }
     </style>
-  <script type="importmap">
-{
-  "imports": {
-    "react-dom/": "https://aistudiocdn.com/react-dom@^19.2.0/",
-    "lucide-react": "https://aistudiocdn.com/lucide-react@^0.554.0",
-    "react-router-dom": "https://aistudiocdn.com/react-router-dom@^7.9.6",
-    "react/": "https://aistudiocdn.com/react@^19.2.0/",
-    "react": "https://aistudiocdn.com/react@^19.2.0"
-  }
-}
-</script>
-<link rel="stylesheet" href="/index.css">
 </head>
-  <body class="bg-star-dark text-slate-200 overflow-x-hidden">
-    <div id="root"></div>
-  <script type="module" src="/index.tsx"></script>
+<body class="bg-industrial-pattern min-h-screen flex flex-col selection:bg-star-red selection:text-white">
+
+    <!-- Navigation -->
+    <nav class="fixed top-0 left-0 right-0 z-50 bg-star-dark/90 backdrop-blur-md border-b border-star-gold/20 h-16 flex items-center px-6 justify-between shadow-lg">
+        <div class="flex items-center space-x-3 cursor-pointer" onclick="window.location.hash='/'">
+            <div class="group flex items-center space-x-2">
+                <div class="relative w-10 h-10 flex items-center justify-center bg-star-red rounded-sm transform rotate-45 group-hover:rotate-0 transition-all duration-500 shadow-[0_0_15px_rgba(185,28,28,0.5)]">
+                    <i data-lucide="star" class="w-6 h-6 text-star-gold transform -rotate-45 group-hover:rotate-0 transition-all duration-500 fill-current"></i>
+                </div>
+                <div class="flex flex-col">
+                    <span class="font-serif font-bold text-xl tracking-widest text-star-gold">群星公会</span>
+                    <span class="text-[0.6rem] uppercase tracking-widest text-slate-400">Stars Guild</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="hidden md:flex space-x-8" id="nav-links">
+            <!-- Links injected by JS -->
+        </div>
+
+        <!-- Admin Toolbar (Hidden by default) -->
+        <div id="admin-toolbar" class="hidden md:flex items-center space-x-2 ml-4 border-l border-slate-700 pl-4">
+            <button onclick="app.toggleEditMode()" id="btn-edit-mode" class="p-2 rounded transition-colors text-slate-400 hover:text-white" title="Toggle Edit Mode">
+                <i data-lucide="edit-3" width="18"></i>
+            </button>
+            <button onclick="app.resetData()" class="p-2 text-slate-400 hover:text-red-500 transition-colors" title="Reset Data">
+                <i data-lucide="rotate-ccw" width="18"></i>
+            </button>
+            <button onclick="app.logout()" class="p-2 text-slate-400 hover:text-white transition-colors" title="Logout">
+                <i data-lucide="lock" width="18"></i>
+            </button>
+        </div>
+
+        <div class="md:hidden text-star-gold">
+            <div class="border border-star-gold/50 px-2 py-1 rounded text-xs">MENU</div>
+        </div>
+    </nav>
+
+    <!-- Main Content Area -->
+    <main id="app" class="flex-grow pt-16 relative min-h-screen">
+        <!-- View content injected here -->
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-black border-t border-star-gold/10 py-12 mt-0 relative overflow-hidden">
+        <div class="container mx-auto px-6 relative z-10">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div>
+                    <h3 class="text-star-red font-bold text-lg mb-4 font-serif">群星公会</h3>
+                    <p class="text-slate-500 text-sm leading-relaxed">
+                        做最理想的现实主义者，<br/>做最现实的理想主义者。
+                    </p>
+                </div>
+                <div class="flex flex-col space-y-2 text-sm text-slate-400">
+                    <h4 class="text-star-gold font-bold mb-2">联系我们</h4>
+                    <span>海口市龙华区骑楼老街</span>
+                    <span>contact@starsguild.org</span>
+                </div>
+                <div class="flex items-end justify-end">
+                    <div class="text-right">
+                        <p class="text-xs text-slate-600 uppercase tracking-widest mb-2">System Status: Online</p>
+                        <div class="flex space-x-1 justify-end items-center">
+                            <button id="lock-btn" onclick="app.openLogin()" class="text-slate-700 hover:text-star-red transition-colors mr-2">
+                                <i data-lucide="lock" width="12"></i>
+                            </button>
+                            <span id="admin-status" class="hidden text-[10px] text-green-500 mr-2">ADMIN ACTIVE</span>
+                            <div class="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
+                            <div class="w-2 h-2 bg-star-red rounded-full"></div>
+                            <div class="w-2 h-2 bg-star-gold rounded-full"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="mt-12 pt-8 border-t border-slate-900 text-center text-xs text-slate-700 select-none">
+                <span onclick="app.handleCopyrightClick()" class="cursor-pointer hover:text-slate-600 transition-colors">
+                    © 2024 Stars Guild. All Rights Reserved.
+                </span>
+            </div>
+        </div>
+        <div class="absolute bottom-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-star-red/20 to-transparent"></div>
+    </footer>
+
+    <!-- Modals -->
+    
+    <!-- Login Modal -->
+    <div id="login-modal" class="fixed inset-0 z-[100] bg-black/90 backdrop-blur-sm hidden items-center justify-center p-4">
+        <div class="bg-slate-900 border border-star-red/50 p-6 max-w-sm w-full">
+            <div class="flex justify-between items-center mb-4">
+                <h3 class="text-star-red font-bold font-serif">Owner Access</h3>
+                <button onclick="app.closeLogin()"><i data-lucide="x" class="text-slate-500 hover:text-white"></i></button>
+            </div>
+            <form onsubmit="app.handleLogin(event)" class="space-y-4">
+                <input type="password" id="password-input" placeholder="Enter Password (stars)" class="w-full bg-black border border-slate-700 text-white p-2 focus:border-star-red focus:outline-none">
+                <button type="submit" class="w-full bg-star-red text-white font-bold py-2 hover:bg-red-700 transition-colors">UNLOCK</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Book List Modal -->
+    <div id="book-modal" class="fixed inset-0 z-[100] bg-black/80 backdrop-blur-md hidden items-center justify-center p-4" onclick="app.closeBooks()">
+        <div class="bg-[#fdf6e3] text-[#657b83] max-w-md w-full p-8 rounded shadow-2xl transform rotate-1 border-l-4 border-star-red relative" onclick="event.stopPropagation()">
+            <button onclick="app.closeBooks()" class="absolute top-2 right-2 text-slate-400 hover:text-star-red"><i data-lucide="x"></i></button>
+            <h2 class="text-2xl font-serif font-bold text-star-red mb-1 border-b-2 border-star-red pb-2">阿彪的书单</h2>
+            <p class="text-xs mb-6 italic text-slate-500">"Muscle & Dialectics"</p>
+            <ul class="space-y-4 font-serif">
+                <li class="flex justify-between border-b border-slate-200 pb-2"><span>《矛盾论》</span><span class="text-star-gold-dim font-bold">必读</span></li>
+                <li class="flex justify-between border-b border-slate-200 pb-2"><span>《施瓦辛格健身全书》</span><span class="text-slate-400">基础</span></li>
+                <li class="flex justify-between border-b border-slate-200 pb-2"><span>《乡土中国》</span><span class="text-slate-400">进阶</span></li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Application Logic -->
+    <script>
+        // --- Initial Data ---
+        const INITIAL_DATA = {
+            members: [
+                { id: '1', name: '杨彦坤', alias: '阿彪', rank: 'A', role: '公会总负责人', position: '战场哲人', motto: '物质决定意识，但拳头能开辟未来。', imageUrl: 'https://picsum.photos/seed/abiao/400/600', special: true },
+                { id: '2', name: '杨淑宜', alias: '穆桂英', rank: 'B', role: '演艺部部长', position: '敏捷主攻', motto: '人生如戏，但我不仅是角儿，更是执枪的人。', imageUrl: 'https://picsum.photos/seed/shuyi/400/600' },
+                { id: '3', name: '薛伊璠', alias: '宝儿', rank: 'A', role: '总参谋长', position: '阵法宗师', motto: '秩序与守护，是这混乱世间最昂贵的奢侈品。', imageUrl: 'https://picsum.photos/seed/baoer/400/600' },
+                { id: '4', name: '薛伊玙', alias: '勇士', rank: 'A', role: '安保部部长', position: '重装坦克', motto: '只有弱者才恃强凌弱，强者只会保护身后的人。', imageUrl: 'https://picsum.photos/seed/warrior/400/600' },
+                { id: '5', name: '冼凯文', alias: '阿丽', rank: 'C', role: '首席装备师', position: '造物主', motto: '万物皆有裂痕，那正是光（和我的以太）照进来的地方。', imageUrl: 'https://picsum.photos/seed/ali/400/600' },
+                { id: '6', name: '陈雷', alias: '阿雷', rank: 'C', role: '情报部部长', position: '战场上帝视角', motto: '代码和音符一样，都不允许有逻辑上的冗余。', imageUrl: 'https://picsum.photos/seed/alei/400/600' },
+                { id: '7', name: '雪莲', alias: '小太阳', rank: 'B', role: '公关部部长', position: '远程狙击', motto: '爱笑的人运气不会差，但我通常不靠运气，靠准头。', imageUrl: 'https://picsum.photos/seed/sun/400/600' },
+            ],
+            products: [
+                { id: 'p1', name: '徐闻“菠萝的海”金钻凤梨', price: 58, category: 'Agricultural', description: '每一口都是北纬20度的阳光。甜度18+，无需泡盐水。', imageUrl: 'https://picsum.photos/seed/pineapple/400/400', origin: '徐闻' },
+                { id: 'p2', name: '廉江红橙', price: 88, category: 'Agricultural', description: '皮薄肉红，汁水丰盈。国宴佳果，助农优选。', imageUrl: 'https://picsum.photos/seed/orange/400/400', origin: '廉江' },
+                { id: 'p3', name: '阿彪同款“辩证法”增肌粉', price: 299, category: 'Merch', description: '附赠《矛盾论》袖珍本。让肌肉与思想同步增长。', imageUrl: 'https://picsum.photos/seed/protein/400/400' },
+                { id: 'p4', name: '穆桂英·手绘雷剧脸谱挂件', price: 45, category: 'Merch', description: '杨淑宜副会长亲手绘制，每一笔都有刀马旦的精气神。', imageUrl: 'https://picsum.photos/seed/mask/400/400' },
+                { id: 'p5', name: '遂溪火龙果', price: 60, category: 'Agricultural', description: '夜灯照耀下的红肉火龙果，富含花青素。', imageUrl: 'https://picsum.photos/seed/dragonfruit/400/400', origin: '遂溪' },
+                { id: 'p6', name: '阿丽手作·机械八音盒', price: 360, category: 'Merch', description: '齿轮与旋律的浪漫结合。限量发售。', imageUrl: 'https://picsum.photos/seed/musicbox/400/400' },
+            ],
+            stats: { dungeons: "042", families: "1,208", sales: "582.6" },
+            home: {
+                heroBg: "https://picsum.photos/1920/1080?grayscale&blur=2",
+                heroSlogan1: "做最理想的现实主义者",
+                heroSlogan2: "做最现实的理想主义者",
+                heroSubSlogan: "潮汐时代的赤色防线 · 人民的公会",
+                missionTitle: "公会宗旨",
+                missionText: "在这个超凡力量觉醒的时代，力量不应成为特权的通行证，而应是守护弱者的盾牌。\n\n我们行走在田间地头，也穿梭于霓虹都市。我们是猎人，也是农夫；是战士，也是戏子。",
+                missionHighlight: "“群星聚是一团火，散是满天星。”"
+            },
+            actions: {
+                mealTitle: "劳动者饭局", mealQuote: "\"甚至不需要一句谢谢，只需要你吃饱。\"", mealDesc: "面向自食其力的一线劳动者。没有领导讲话，没有摆拍仪式，只有热气腾腾的自助餐和朋友间的碰杯。", mealImg: "https://picsum.photos/seed/meal/800/600",
+                heritageTitle: "非遗之夜 & 助农直播", heritageQuote: "\"当电音遇上雷剧，当代码遇上泥土。\"", heritageDesc1: "19:00 - 群星戏班：赛博雷剧公演", heritageDesc2: "20:30 - 阿雷 x 雪莲：特产带货直播", heritageImg: "https://picsum.photos/seed/opera/800/600",
+                finalQuote: "\"承担，是我们对这片土地最深情的告白。\""
+            },
+            base: {
+                address: "海南省海口市龙华区骑楼老街XX号", addressNote: "（那栋挂着红色霓虹星牌的南洋骑楼）", hours: "18:00 - 02:00 (次日)", hoursNote: "周四公休（全员去办饭局了）",
+                managerName: "林鱼鱼", managerRole: "主理人 / 普通人", managerQuote: "“这里没有等级，只有朋友。累了就进来喝杯东西吧。”", managerImg: "https://picsum.photos/seed/girl/100/100", vibeImg: "https://images.unsplash.com/photo-1514933651103-005eec06c04b?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+            }
+        };
+
+        // --- Application Core ---
+        const app = {
+            data: JSON.parse(localStorage.getItem('stars_guild_data')) || INITIAL_DATA,
+            state: {
+                isAuthenticated: sessionStorage.getItem('stars_auth') === 'true',
+                isEditMode: sessionStorage.getItem('stars_auth') === 'true',
+                currentPath: window.location.hash || '#/'
+            },
+
+            init() {
+                this.renderNav();
+                this.handleRoute();
+                this.updateAdminUI();
+                window.addEventListener('hashchange', () => {
+                    this.state.currentPath = window.location.hash;
+                    this.handleRoute();
+                    this.renderNav();
+                });
+            },
+
+            // --- Persistence ---
+            saveData() {
+                localStorage.setItem('stars_guild_data', JSON.stringify(this.data));
+                this.renderCurrentView(); // Re-render to show updates
+            },
+            
+            resetData() {
+                if(confirm('确定重置所有数据到初始状态吗？')) {
+                    this.data = JSON.parse(JSON.stringify(INITIAL_DATA));
+                    this.saveData();
+                }
+            },
+
+            // --- Auth ---
+            login(password) {
+                if (password === 'stars') {
+                    this.state.isAuthenticated = true;
+                    this.state.isEditMode = true;
+                    sessionStorage.setItem('stars_auth', 'true');
+                    this.updateAdminUI();
+                    this.renderCurrentView();
+                    return true;
+                }
+                return false;
+            },
+            logout() {
+                this.state.isAuthenticated = false;
+                this.state.isEditMode = false;
+                sessionStorage.removeItem('stars_auth');
+                this.updateAdminUI();
+                this.renderCurrentView();
+            },
+            toggleEditMode() {
+                this.state.isEditMode = !this.state.isEditMode;
+                this.updateAdminUI();
+                this.renderCurrentView();
+            },
+
+            // --- UI Helpers ---
+            updateAdminUI() {
+                const toolbar = document.getElementById('admin-toolbar');
+                const status = document.getElementById('admin-status');
+                const lockBtn = document.getElementById('lock-btn');
+                const editBtn = document.getElementById('btn-edit-mode');
+                
+                if (this.state.isAuthenticated) {
+                    toolbar.classList.remove('hidden');
+                    status.classList.remove('hidden');
+                    lockBtn.classList.add('hidden');
+                    editBtn.classList.toggle('bg-star-gold', this.state.isEditMode);
+                    editBtn.classList.toggle('text-black', this.state.isEditMode);
+                } else {
+                    toolbar.classList.add('hidden');
+                    status.classList.add('hidden');
+                    lockBtn.classList.remove('hidden');
+                }
+                lucide.createIcons();
+            },
+
+            // --- Editable Components ---
+            editable(path, value, multiline = false, cssClass = '') {
+                if (!this.state.isEditMode) return `<span class="${cssClass}">${value}</span>`;
+                const safeValue = String(value).replace(/"/g, '&quot;');
+                if (multiline) {
+                    return `<textarea onchange="app.updateField('${path}', this.value)" class="bg-slate-800 border border-star-gold/50 text-white p-1 w-full rounded min-h-[100px] ${cssClass}">${value}</textarea>`;
+                }
+                return `<input type="text" onchange="app.updateField('${path}', this.value)" value="${safeValue}" class="bg-slate-800 border border-star-gold/50 text-white px-1 rounded min-w-[50px] ${cssClass}">`;
+            },
+
+            editableImg(path, src, alt, cssClass = '') {
+                const imgHtml = `<img src="${src}" alt="${alt}" class="${cssClass} w-full h-full object-cover transition-transform duration-700 ${this.state.isEditMode ? 'opacity-50' : ''}">`;
+                if (!this.state.isEditMode) return imgHtml;
+                
+                return `
+                <div class="relative w-full h-full group bg-slate-900 overflow-hidden">
+                    ${imgHtml}
+                    <div class="absolute top-2 left-2 right-2 z-[60]">
+                        <input type="text" value="${src}" onchange="app.updateField('${path}', this.value)" 
+                        class="bg-black/80 text-white text-[10px] p-2 border border-star-red w-full rounded shadow-lg" placeholder="Image URL...">
+                    </div>
+                </div>`;
+            },
+
+            updateField(path, value) {
+                // Simple path resolver: 'home.title' or 'members[0].name'
+                // For simplicity in this vanilla version, we'll write specific updaters or eval-like logic, 
+                // but safer is to assume path is 'category.field' or 'collection.id.field'
+                
+                // Let's use a split approach for this specific data structure
+                const parts = path.split('.');
+                if (parts.length === 2) {
+                    // e.g. home.heroSlogan1
+                    this.data[parts[0]][parts[1]] = value;
+                } else if (parts.length === 3) {
+                    // e.g. members.1.name
+                    const collection = parts[0];
+                    const id = parts[1];
+                    const field = parts[2];
+                    const item = this.data[collection].find(i => i.id === id);
+                    if (item) item[field] = value;
+                }
+                this.saveData();
+            },
+
+            // --- Routing & Rendering ---
+            renderNav() {
+                const links = [
+                    { path: '#/', label: '星星之火', icon: 'star' },
+                    { path: '#/comrades', label: '核心成员', icon: 'shield' },
+                    { path: '#/selection', label: '群星甄选', icon: 'shopping-bag' },
+                    { path: '#/actions', label: '红色活动', icon: 'calendar' },
+                    { path: '#/base', label: '线下据点', icon: 'map-pin' },
+                ];
+                
+                const html = links.map(l => {
+                    const active = this.state.currentPath === l.path;
+                    return `
+                    <a href="${l.path}" class="relative group flex items-center space-x-1 py-2 transition-colors duration-300 ${active ? 'text-star-red' : 'text-slate-300 hover:text-star-gold'}">
+                        <i data-lucide="${l.icon}" width="16" class="mb-0.5 ${active ? 'fill-current' : ''}"></i>
+                        <span class="font-medium">${l.label}</span>
+                        ${active ? '<span class="absolute bottom-0 left-0 w-full h-0.5 bg-star-red shadow-[0_0_8px_rgba(185,28,28,0.8)]"></span>' : ''}
+                    </a>`;
+                }).join('');
+                document.getElementById('nav-links').innerHTML = html;
+            },
+
+            handleRoute() {
+                const hash = window.location.hash || '#/';
+                const routes = {
+                    '#/': this.renderHome.bind(this),
+                    '#/comrades': this.renderComrades.bind(this),
+                    '#/selection': this.renderSelection.bind(this),
+                    '#/actions': this.renderActions.bind(this),
+                    '#/base': this.renderBase.bind(this),
+                };
+                const renderFn = routes[hash] || routes['#/'];
+                document.getElementById('app').innerHTML = renderFn();
+                lucide.createIcons();
+                window.scrollTo(0,0);
+            },
+
+            // --- Views ---
+            renderHome() {
+                const h = this.data.home;
+                const s = this.data.stats;
+                return `
+                <div class="w-full">
+                    <section class="relative h-[90vh] w-full overflow-hidden flex items-center justify-center">
+                        <div class="absolute inset-0 z-0">
+                            ${this.editableImg('home.heroBg', h.heroBg, 'Hero BG', 'w-full h-full object-cover opacity-40 scale-105 animate-pulse-slow')}
+                            <div class="absolute inset-0 bg-gradient-to-t from-star-dark via-star-dark/60 to-transparent pointer-events-none"></div>
+                            <div class="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/diagonal-stripes.png')] opacity-30 pointer-events-none"></div>
+                        </div>
+                        <div class="relative z-10 text-center px-4 max-w-5xl mx-auto">
+                            <div class="mb-6 animate-fade-in-up">
+                                <span class="inline-block py-1 px-3 border border-star-red/50 text-star-red text-xs tracking-[0.3em] uppercase bg-black/50 backdrop-blur-md">Stars Guild • Est. 2024</span>
+                            </div>
+                            <h1 class="text-4xl md:text-6xl lg:text-7xl font-serif font-bold text-white mb-6 leading-tight tracking-wide drop-shadow-xl">
+                                <span class="block mb-2">${this.editable('home.heroSlogan1', h.heroSlogan1)}</span>
+                                <span class="block text-star-gold/90">${this.editable('home.heroSlogan2', h.heroSlogan2)}</span>
+                            </h1>
+                            <div class="text-lg md:text-xl text-slate-300 mb-10 font-light tracking-wide border-l-4 border-star-red pl-4 mx-auto inline-block text-left bg-black/30 p-4">
+                                ${this.editable('home.heroSubSlogan', h.heroSubSlogan)}
+                            </div>
+                            <div class="flex flex-col sm:flex-row items-center justify-center gap-6 animate-fade-in-up">
+                                <button class="px-8 py-4 bg-star-red hover:bg-red-700 text-white font-bold tracking-wider uppercase transition-all duration-300 shadow-[0_0_20px_rgba(185,28,28,0.4)] clip-path-slant">入会申请</button>
+                                <button class="px-8 py-4 bg-transparent border border-star-red text-star-red hover:bg-star-red/10 font-bold tracking-wider uppercase transition-all duration-300 clip-path-slant">委托发布</button>
+                            </div>
+                        </div>
+                    </section>
+                    <section class="py-24 bg-slate-950 relative border-t border-star-gold/10">
+                        <div class="container mx-auto px-6">
+                            <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+                                <div class="space-y-8">
+                                    <h2 class="text-3xl font-serif font-bold text-star-gold border-l-4 border-star-red pl-4">${this.editable('home.missionTitle', h.missionTitle)}</h2>
+                                    <div class="text-slate-300 text-lg leading-relaxed text-justify font-light">
+                                        ${this.editable('home.missionText', h.missionText, true)}
+                                        <br/><br/>
+                                        <span class="text-star-red font-bold text-xl">${this.editable('home.missionHighlight', h.missionHighlight)}</span>
+                                    </div>
+                                    <div class="pt-4 opacity-30 hover:opacity-100 transition-opacity cursor-pointer w-fit" onclick="app.openBooks()">
+                                        <div class="flex items-center space-x-2 text-sm text-star-gold"><i data-lucide="book-open" width="16"></i><span>阅读角</span></div>
+                                    </div>
+                                </div>
+                                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                                    ${this.renderStatCard('已攻略地下城', s.dungeons, 'activity', 'stats.dungeons')}
+                                    ${this.renderStatCard('已援助困难家庭', s.families, 'heart', 'stats.families')}
+                                    ${this.renderStatCard('助农销售 (万元)', s.sales, 'shopping-cart', 'stats.sales')}
+                                    <div class="bg-star-red/10 border border-star-red/30 p-6 flex items-center justify-center">
+                                        <p class="text-star-red font-serif font-bold text-xl text-center">利润 100%<br/>回流农户</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                </div>`;
+            },
+
+            renderStatCard(label, value, icon, path) {
+                return `
+                <div class="bg-slate-900/80 border border-star-gold/20 p-6 backdrop-blur-sm hover:border-star-red/50 transition-all duration-500 group">
+                    <div class="flex justify-between items-start mb-4">
+                        <i data-lucide="${icon}" class="text-slate-600 group-hover:text-star-gold transition-colors" width="24"></i>
+                        <span class="text-xs font-mono text-star-red uppercase tracking-wider">Live Data</span>
+                    </div>
+                    <div class="text-4xl font-bold text-slate-100 mb-1 font-mono group-hover:text-star-gold transition-colors">
+                        ${this.editable(path, value)}
+                    </div>
+                    <div class="text-sm text-slate-400">${label}</div>
+                </div>`;
+            },
+
+            renderComrades() {
+                return `
+                <div class="min-h-screen py-20 px-6 bg-star-dark">
+                    <div class="container mx-auto">
+                        <div class="mb-16 text-center">
+                            <h1 class="text-4xl md:text-5xl font-serif font-bold text-slate-100 mb-4"><span class="text-star-red">群星</span>闪耀时</h1>
+                            <p class="text-slate-400 max-w-2xl mx-auto font-light">他们是凡人，也是英雄。在潮汐中站立，在烟火中前行。</p>
+                        </div>
+                        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+                            ${this.data.members.map(m => this.renderMemberCard(m)).join('')}
+                        </div>
+                    </div>
+                </div>`;
+            },
+
+            renderMemberCard(m) {
+                const path = `members.${m.id}`;
+                return `
+                <div class="${m.special ? 'lg:col-span-2' : ''} group relative w-full ${this.state.isEditMode ? 'h-[500px]' : 'h-[450px]'} bg-slate-900 border border-slate-800 overflow-hidden hover:border-star-gold transition-all duration-500 shadow-lg">
+                    <div class="absolute inset-0 h-full w-full">
+                        ${this.editableImg(`${path}.imageUrl`, m.imageUrl, m.name, 'w-full h-full object-cover filter grayscale group-hover:grayscale-0 group-hover:scale-110')}
+                    </div>
+                    <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/40 to-transparent opacity-90 group-hover:opacity-70 transition-opacity duration-500 pointer-events-none"></div>
+                    <div class="absolute top-4 right-4 w-10 h-10 border-2 border-star-gold flex items-center justify-center transform rotate-45 bg-black/50 backdrop-blur-md z-20">
+                        <span class="text-star-gold font-bold font-mono transform -rotate-45 text-lg">${this.editable(`${path}.rank`, m.rank)}</span>
+                    </div>
+                    <div class="absolute bottom-0 left-0 w-full p-6 z-20 ${this.state.isEditMode ? '' : 'transform translate-y-14 group-hover:translate-y-0'} transition-transform duration-500 ease-out">
+                        <div class="border-l-4 border-star-red pl-4 mb-4">
+                            <h3 class="text-3xl font-serif font-bold text-white mb-1">${this.editable(`${path}.alias`, m.alias)}</h3>
+                            <div class="text-sm text-slate-400 font-mono uppercase tracking-widest">${this.editable(`${path}.name`, m.name)}</div>
+                        </div>
+                        <div class="space-y-3 ${this.state.isEditMode ? 'opacity-100' : 'opacity-0 group-hover:opacity-100'} transition-opacity duration-500 delay-100">
+                            <div class="flex items-center space-x-2 text-star-gold text-sm"><i data-lucide="shield" width="14"></i>${this.editable(`${path}.role`, m.role)}</div>
+                            <div class="flex items-center space-x-2 text-star-red text-sm font-bold"><i data-lucide="zap" width="14"></i>${this.editable(`${path}.position`, m.position)}</div>
+                            <div class="pt-4 border-t border-white/10">
+                                <p class="text-slate-300 text-xs italic font-serif">${this.editable(`${path}.motto`, m.motto, true)}</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>`;
+            },
+
+            renderSelection() {
+                return `
+                <div class="min-h-screen bg-slate-100 text-slate-900 py-20 px-6">
+                    <div class="container mx-auto">
+                        <div class="flex flex-col md:flex-row justify-between items-end mb-12 border-b-2 border-star-red/20 pb-6">
+                            <div>
+                                <h1 class="text-4xl font-serif font-bold text-slate-900">群星甄选 <span class="text-star-red text-2xl">Stars Selection</span></h1>
+                                <p class="text-slate-500 mt-2">连接土地与餐桌，让每一分钱都温暖劳动者。</p>
+                            </div>
+                            <div class="bg-star-gold/10 border border-star-gold/50 p-3 rounded-sm mt-4 md:mt-0">
+                                <p class="text-star-gold-dim text-sm font-bold">⚠️ 承诺：扣除物流成本后，利润 100% 归还农户。</p>
+                            </div>
+                        </div>
+                        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                            ${this.data.products.map(p => this.renderProductCard(p)).join('')}
+                        </div>
+                    </div>
+                </div>`;
+            },
+
+            renderProductCard(p) {
+                const path = `products.${p.id}`;
+                return `
+                <div class="bg-white text-slate-800 group overflow-hidden relative flex flex-col h-full border-b-4 border-star-red hover:shadow-2xl transition-shadow duration-300">
+                    <div class="relative h-64 overflow-hidden">
+                        ${this.editableImg(`${path}.imageUrl`, p.imageUrl, p.name, 'w-full h-full object-cover transition-transform duration-700 group-hover:scale-105')}
+                        ${p.category === 'Agricultural' ? '<div class="absolute top-2 left-2 bg-green-600 text-white text-xs px-2 py-1 font-bold uppercase">助农产品</div>' : ''}
+                        <div class="absolute bottom-0 right-0 bg-star-red text-white px-3 py-1 font-mono font-bold flex items-center">¥ ${this.editable(`${path}.price`, p.price)}</div>
+                    </div>
+                    <div class="p-6 flex flex-col flex-grow">
+                        <h3 class="font-serif font-bold text-xl text-slate-900 mb-2 w-full">${this.editable(`${path}.name`, p.name)}</h3>
+                        <div class="text-sm text-slate-600 mb-4 flex-grow font-light w-full">${this.editable(`${path}.description`, p.description, true)}</div>
+                        <div class="pt-4 border-t border-slate-100 flex justify-between items-center">
+                            <span class="text-xs text-slate-400 flex items-center">
+                                <i data-lucide="${p.origin ? 'tag' : 'gift'}" width="12" class="mr-1"></i>
+                                ${p.origin || '群星周边'}
+                            </span>
+                            <button class="text-star-red border border-star-red px-4 py-1 text-sm font-bold hover:bg-star-red hover:text-white transition-colors flex items-center">
+                                <i data-lucide="shopping-cart" width="14" class="mr-2"></i> 购买
+                            </button>
+                        </div>
+                    </div>
+                </div>`;
+            },
+
+            renderActions() {
+                const d = this.data.actions;
+                return `
+                <div class="min-h-screen bg-star-dark py-20 px-6">
+                    <div class="container mx-auto max-w-4xl">
+                        <h1 class="text-5xl font-serif font-bold text-white mb-16 text-center"><span class="border-b-4 border-star-red pb-2">红色活动</span> Actions</h1>
+                        <!-- Thursday -->
+                        <div class="relative bg-slate-900 border border-slate-800 overflow-hidden mb-20 group">
+                            <div class="absolute top-0 left-0 w-2 h-full bg-star-gold"></div>
+                            <div class="grid grid-cols-1 md:grid-cols-2">
+                                <div class="h-64 md:h-auto overflow-hidden relative">${this.editableImg('actions.mealImg', d.mealImg, 'Meal')}</div>
+                                <div class="p-8 flex flex-col justify-center">
+                                    <div class="flex items-center space-x-2 text-star-gold mb-2"><i data-lucide="utensils" width="20"></i><span class="font-mono font-bold uppercase">Every Thursday</span></div>
+                                    <h2 class="text-3xl font-bold text-white mb-4">${this.editable('actions.mealTitle', d.mealTitle)}</h2>
+                                    <h3 class="text-xl text-slate-400 font-serif italic mb-6">${this.editable('actions.mealQuote', d.mealQuote)}</h3>
+                                    <div class="text-slate-400 text-sm leading-relaxed mb-6">${this.editable('actions.mealDesc', d.mealDesc, true)}</div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Saturday -->
+                        <div class="relative bg-slate-900 border border-slate-800 overflow-hidden mb-20 group">
+                            <div class="absolute top-0 right-0 w-2 h-full bg-star-red"></div>
+                            <div class="grid grid-cols-1 md:grid-cols-2">
+                                <div class="p-8 flex flex-col justify-center order-2 md:order-1 text-right">
+                                    <div class="flex items-center justify-end space-x-2 text-star-red mb-2"><span class="font-mono font-bold uppercase">Every Saturday</span><i data-lucide="mic-2" width="20"></i></div>
+                                    <h2 class="text-3xl font-bold text-white mb-4">${this.editable('actions.heritageTitle', d.heritageTitle)}</h2>
+                                    <h3 class="text-xl text-slate-400 font-serif italic mb-6">${this.editable('actions.heritageQuote', d.heritageQuote)}</h3>
+                                    <ul class="text-slate-400 text-sm leading-relaxed mb-6 space-y-2 inline-block text-right w-full">
+                                        <li>${this.editable('actions.heritageDesc1', d.heritageDesc1)}</li>
+                                        <li>${this.editable('actions.heritageDesc2', d.heritageDesc2)}</li>
+                                    </ul>
+                                </div>
+                                <div class="h-64 md:h-auto overflow-hidden order-1 md:order-2 relative">${this.editableImg('actions.heritageImg', d.heritageImg, 'Heritage')}</div>
+                            </div>
+                        </div>
+                         <div class="text-center py-10"><p class="text-2xl font-serif text-star-gold">${this.editable('actions.finalQuote', d.finalQuote)}</p></div>
+                    </div>
+                </div>`;
+            },
+
+            renderBase() {
+                const b = this.data.base;
+                return `
+                <div class="min-h-screen bg-star-dark relative overflow-hidden">
+                    <div class="absolute inset-0 z-0 opacity-20 bg-[url('https://images.unsplash.com/photo-1550100136-e0721016d6b7?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80')] bg-cover bg-center"></div>
+                    <div class="absolute inset-0 z-0 bg-gradient-to-b from-star-dark via-star-dark/90 to-star-dark"></div>
+                    <div class="container mx-auto px-6 relative z-10 py-20">
+                        <div class="max-w-5xl mx-auto bg-black/60 backdrop-blur-lg border border-star-gold/30 p-8 md:p-12 shadow-[0_0_50px_rgba(0,0,0,0.8)]">
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+                                <div>
+                                    <h1 class="text-4xl font-serif font-bold text-white mb-2">群星俱乐部</h1>
+                                    <h2 class="text-star-gold font-mono tracking-widest text-sm mb-8">STARS CLUB • HAIKOU</h2>
+                                    <div class="space-y-6 text-slate-300">
+                                        <div class="flex items-start space-x-4"><i data-lucide="map-pin" class="text-star-red mt-1"></i><div><p class="font-bold text-white">地址 Address</p><p>${this.editable('base.address', b.address)}</p><p class="text-xs text-slate-500 mt-1">${this.editable('base.addressNote', b.addressNote)}</p></div></div>
+                                        <div class="flex items-start space-x-4"><i data-lucide="clock" class="text-star-red mt-1"></i><div><p class="font-bold text-white">营业时间 Hours</p><p>${this.editable('base.hours', b.hours)}</p><p class="text-xs text-slate-500 mt-1">${this.editable('base.hoursNote', b.hoursNote)}</p></div></div>
+                                        <div class="border-t border-white/10 pt-6 mt-8">
+                                            <div class="flex items-center gap-4">
+                                                <div class="w-16 h-16 flex-shrink-0 overflow-hidden rounded-full border-2 border-star-gold/50">${this.editableImg('base.managerImg', b.managerImg, 'Manager', 'object-cover rounded-full')}</div>
+                                                <div>
+                                                    <p class="text-star-gold font-bold text-lg">${this.editable('base.managerName', b.managerName)}</p>
+                                                    <p class="text-xs text-slate-400 uppercase tracking-wider mb-1">${this.editable('base.managerRole', b.managerRole)}</p>
+                                                    <p class="text-sm italic text-slate-300">${this.editable('base.managerQuote', b.managerQuote)}</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="relative h-96 md:h-full min-h-[400px] border border-slate-700 p-2 rotate-2 hover:rotate-0 transition-transform duration-500 bg-slate-900">
+                                    ${this.editableImg('base.vibeImg', b.vibeImg, 'Bar', 'opacity-80 hover:opacity-100 transition-opacity')}
+                                    <div class="absolute bottom-6 right-6 bg-black/80 px-4 py-2 border border-star-red text-star-red font-mono text-xs tracking-widest animate-pulse pointer-events-none">OPEN</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>`;
+            },
+            
+            // --- Modal Handlers ---
+            openLogin() { document.getElementById('login-modal').classList.replace('hidden', 'flex'); },
+            closeLogin() { document.getElementById('login-modal').classList.replace('flex', 'hidden'); },
+            handleLogin(e) {
+                e.preventDefault();
+                const pwd = document.getElementById('password-input').value;
+                if(this.login(pwd)) {
+                    this.closeLogin();
+                    document.getElementById('password-input').value = '';
+                } else {
+                    alert('密码错误 (Hint: stars)');
+                }
+            },
+            openBooks() { document.getElementById('book-modal').classList.replace('hidden', 'flex'); },
+            closeBooks() { document.getElementById('book-modal').classList.replace('flex', 'hidden'); },
+            handleCopyrightClick() {
+                // Easter egg logic placeholder
+                console.log("Click");
+            },
+            renderCurrentView() {
+                this.handleRoute();
+            }
+        };
+
+        // Initialize App
+        document.addEventListener('DOMContentLoaded', () => {
+            app.init();
+        });
+    </script>
 </body>
 </html>
