@@ -1,0 +1,30 @@
+/* Custom Utilities that Tailwind doesn't cover directly or extracted for cleanliness */
+body {
+    background-color: #020617;
+    color: #e2e8f0;
+    overflow-x: hidden;
+}
+
+.clip-path-slant {
+    clip-path: polygon(10% 0, 100% 0, 90% 100%, 0% 100%);
+}
+
+.bg-industrial-pattern {
+    background-image: radial-gradient(circle at 1px 1px, rgba(255,255,255,0.05) 1px, transparent 0);
+    background-size: 40px 40px;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+    width: 8px;
+}
+::-webkit-scrollbar-track {
+    background: #0f172a; 
+}
+::-webkit-scrollbar-thumb {
+    background: #334155; 
+    border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+    background: #b91c1c; 
+}
