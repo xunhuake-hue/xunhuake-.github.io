@@ -35,6 +35,6 @@ window.INITIAL_DATA = {
     },
     base: {
         address: "海南省海口市龙华区骑楼老街XX号", addressNote: "（那栋挂着红色霓虹星牌的南洋骑楼）", hours: "18:00 - 02:00 (次日)", hoursNote: "周四公休（全员去办饭局了）",
-        managerName: "林鱼鱼", managerRole: "主理人", managerQuote: "“革命就是请客吃饭，我们是历史的践行者”", managerImg: "https://files.imagetourl.net/uploads/1763579554092-ab866139-b2fa-4c26-abe1-1dd3b026014d.jpg", vibeImg: "https://images.unsplash.com/photo-1514933651103-005eec06c04b?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+        managerName: "", managerRole: "主理人", managerQuote: "“革命就是请客吃饭，我们是历史的践行者”", managerImg: "", vibeImg: "https://images.unsplash.com/photo-1514933651103-005eec06c04b?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
     }
 };
